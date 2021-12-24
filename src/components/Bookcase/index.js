@@ -106,6 +106,7 @@ function Bookcase(){
 
     useEffect(() => {
         sortShelves(sortType);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortType, revertOrder])
 
     return(
