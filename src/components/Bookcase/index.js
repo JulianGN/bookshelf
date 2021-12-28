@@ -22,8 +22,6 @@ function Bookcase(){
     const sortType = useSelector(state => state.sortType);
     const revertOrder = useSelector(state => state.revertOrder);
 
-    const dispatch = useDispatch();
-
     const [firstGroup, setFirstGroup] = useState([
         {
             letter: 'A',
