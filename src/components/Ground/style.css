@@ -10,6 +10,8 @@
     bottom: 0;
     width: calc(90vmin - 80px);
     height: calc(45vmin - 80px);
+    min-width: 280px;
+    min-height: 130px;
     margin: 40px;
   }
   
