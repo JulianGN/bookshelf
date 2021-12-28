@@ -1,68 +1,77 @@
 .App-logo {
-    height: 35vmin;
-    pointer-events: none;
-  }
-  
+  height: 35vmin;
+  z-index: 10;
+  transition: .5s;
+  animation: wiggle 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out
+}
+
+.App-logo:hover {
+  transition: .5s;
+  animation: jump .5s;
+  animation-timing-function: cubic-bezier(.82,-0.78,.26,1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.App header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 5% 0 10%;
+}
+
+.clock-base {
+  position: relative;
+  height: 30vmin;
+  width: 30vmin;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../imgs/clock_base.svg');
+}
+
+.clock-base > div {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform-origin: center left;
+}
+
+@media (orientation: portrait){
   .App header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 5% 0 10%;
+    justify-content: center;
   }
 
+  .App-logo {
+    height: 25vmin;
+  }
+  
   .clock-base {
-    position: relative;
-    height: 30vmin;
-    width: 30vmin;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('../../imgs/clock_base.svg');
-  }
-  
-  .clock-base > div {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform-origin: center left;
-  }
-  
-  .second-line {
-    background-color: #9b6dbf;
-    height: 1px;
-    margin-left: -1px;
-    width: 36%;
-    transform: rotate(120deg);
-  }
-  .minute-line {
-    background-color: #9b6dbf;
-    height: 4px;
-    margin-left: -1px;
-    width: 34%;
-    transform: rotate(270deg);
-  }
-  .hour-line {
-    background-color: #633585;
-    height: 6px;
-    margin-left: -3px;
-    width: 20%;
-    transform: rotate(0deg);
+    display: none;
   }
 
-  @media (orientation: portrait){
-    .App header {
-      justify-content: center;
-    }
-  
-    .App-logo {
-      height: 25vmin;
-    }
-    
-    .clock-base {
-      display: none;
-    }
+}
 
-  }
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(-5deg); }
+  20% { transform: rotate(5deg); }
+  30% { transform: rotate(-5deg); }
+  40% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  60% { transform: rotate(5deg); }
+  70% { transform: rotate(-5deg); }
+  80% { transform: rotate(5deg); }
+  90% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+@keyframes jump {
+  0% { transform: translateY(0) }
+  100% { transform: translateY(-30px) }
+}
