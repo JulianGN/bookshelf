@@ -27,11 +27,23 @@
     position: absolute;
     top: 0;
   }
-  
+
   .bookcase-container ul {
     width: 100%;
     height: 40%;
+  }
+  
+  .bookcase-container ul > div {
+    height: 100%;
     display: flex;
+  }
+
+  .bookcase-container ul:first-child > div {
+    justify-content: flex-start;
+  }
+
+  .bookcase-container ul:last-child > div {
+    justify-content: flex-end;
   }
   
   .bookcase-container li {
@@ -40,15 +52,8 @@
     display: flex;
   }
   
-  .first-shelf {
-    justify-content: flex-start;
-  }
-  
-  .last-shelf {
-    justify-content: flex-end;
-  }
-  
   .bookcase-container ul img {
+    cursor: grab;
     width: 100%;
   }
   

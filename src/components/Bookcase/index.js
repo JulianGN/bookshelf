@@ -1,7 +1,9 @@
 import './style.css'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { ReactSortable } from "react-sortablejs";
 
 import bookcase from '../../imgs/bookcase.svg';
 
@@ -18,90 +20,84 @@ import bookI from '../../imgs/book_i.svg';
 
 function Bookcase(){
     const sortType = useSelector(state => state.sortType);
-    const firstShelfSorted = useSelector(state => state.firstShelfSorted);
-    const lastShelfSorted = useSelector(state => state.lastShelfSorted);
     const revertOrder = useSelector(state => state.revertOrder);
 
     const dispatch = useDispatch();
 
-    const originalFirstShelf = [
+    const [firstGroup, setFirstGroup] = useState([
         {
             letter: 'A',
             color: '2-yellow',
-            size: 4,
+            size: 198,
             src: bookA
         },
         {
             letter: 'B',
             color: '0-red',
-            size: 3,
+            size: 180,
             src: bookB
         },
         {
             letter: 'C',
             color: '1-orange',
-            size: 5,
+            size: 207,
             src: bookC
         },
         {
             letter: 'D',
             color: '7-purple',
-            size: 5,
+            size: 207,
             src: bookD
         },
         {
             letter: 'E',
             color: '4-cyan',
-            size: 0,
+            size: 153,
             src: bookE
         },
         {
             letter: 'F',
             color: '6-magenta',
-            size: 2,
+            size: 171,
             src: bookF
         },
-    ];
-    
-    const originalLastShelf = [
+    ]);
+
+    const [secondGroup, setSecondGroup] = useState([
         {
             letter: 'G',
             color: '8-pink',
-            size: 1,
+            size: 171,
             src: bookG
         },
         {
             letter: 'H',
             color: '5-blue',
-            size: 5,
+            size: 207,
             src: bookH
         },
         {
             letter: 'I',
             color: '3-green',
-            size: 5,
+            size: 189,
             src: bookI
         },
-    ];
-
-    const sortedFirstShelf = firstShelfSorted.length > 0 ? firstShelfSorted : originalFirstShelf; 
-    const sortedLastShelf = lastShelfSorted.length > 0 ? lastShelfSorted : originalLastShelf; 
+    ]);
 
     const sortShelves = (type) => {
-        let firstShelfSorted = [...sortedFirstShelf].sort((a, b) => a[type] > b[type] ? 1 : ((b[type] > a[type]) ? -1 : 0));
-        let lastShelfSorted = [...sortedLastShelf].sort((a, b) => a[type] < b[type] ? 1 : ((b[type] < a[type]) ? -1 : 0));
+        let _firstShelfSorted = [...firstGroup];
+        let _lastShelfSorted = [...secondGroup];
         
+        _firstShelfSorted.sort((a, b) => a[type] > b[type] ? 1 : ((b[type] > a[type]) ? -1 : 0));
+        _lastShelfSorted.sort((a, b) => a[type] < b[type] ? 1 : ((b[type] < a[type]) ? -1 : 0));    
+
         if(revertOrder){
-            firstShelfSorted.reverse();
-            lastShelfSorted.reverse();
-        } else {
-            dispatch({type: 'revertOrderSelected', payload: false })
-            firstShelfSorted = [...sortedFirstShelf].sort((a, b) => a[type] > b[type] ? 1 : ((b[type] > a[type]) ? -1 : 0));
-            lastShelfSorted = [...sortedLastShelf].sort((a, b) => a[type] < b[type] ? 1 : ((b[type] < a[type]) ? -1 : 0));
-        }          
+            _firstShelfSorted.reverse();
+            _lastShelfSorted.reverse();
+        }
         
-        dispatch({ type: 'firstShelfChanged', payload: firstShelfSorted, })
-        dispatch({ type: 'lastShelfChanged', payload: lastShelfSorted, })
+        setFirstGroup(_firstShelfSorted);
+        setSecondGroup(_lastShelfSorted);
     };
 
     useEffect(() => {
@@ -110,26 +106,43 @@ function Bookcase(){
     }, [sortType, revertOrder])
 
     return(
-      <section className="bookcase-container">
+        <section className="bookcase-container">
             <img src={bookcase} className="bookcase-background" alt="bookcase" />
             <div className="bookcase-shelves">
-              <ul className="first-shelf">
-                {sortedFirstShelf.map((book, i) => (
-                    <li key={'book' + i}>
-                        <img src={book.src} className={"book-" + book.letter.toLowerCase()} alt={"book " + book.letter} />
-                    </li>
-                ))}                                                                              
-              </ul>
-  
-              <ul className="last-shelf">
-                {sortedLastShelf.map((book, i) => (
-                    <li key={'book' + i}>
-                        <img src={book.src} className={"book-" + book.letter.toLowerCase()} alt={"book " + book.letter} />
-                    </li>
-                ))}                                                                              
-              </ul>
+                <ul>
+                    <ReactSortable
+                        list={firstGroup}
+                        setList={setFirstGroup}
+                        animation={150}
+                        group="bookshelf"
+                        onChange={(order, sortable, evt) => {}}
+                        onEnd={evt => {}}
+                    >
+                        {firstGroup.map((book) => (
+                            <li key={book.letter} item={book}>
+                                <img src={book.src} className={"book-" + book.letter.toLowerCase()} alt={"book " + book.letter} />
+                            </li>
+                        ))}
+                    </ReactSortable>
+                </ul>
+                <ul>
+                    <ReactSortable
+                        list={secondGroup}
+                        setList={setSecondGroup}
+                        animation={150}
+                        group="bookshelf"
+                        onChange={(order, sortable, evt) => {}}
+                        onEnd={evt => {}}
+                    >
+                        {secondGroup.map((book) => (
+                            <li key={book.letter} item={book}>
+                                <img src={book.src} className={"book-" + book.letter.toLowerCase()} alt={"book " + book.letter} />
+                            </li>
+                        ))}
+                    </ReactSortable>
+                </ul>
             </div>
-          </section>
+        </section>
     )
 }
 

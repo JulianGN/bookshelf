@@ -24,6 +24,10 @@ function Ground() {
   }
 
   const selectSortType = () => {
+    if(sortType !== data.active) {
+      dispatch({type: 'revertOrderSelected', payload: false })
+    }
+
     if(sortType === data.active) {
       dispatch({type: 'revertOrderSelected', payload: !revertOrder })
     }
