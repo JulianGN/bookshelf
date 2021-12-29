@@ -126,6 +126,12 @@ button.sort-by-release {
   .filter-container {
     width: calc(100vmin - 80px);
     height: calc(55vmin - 80px);
-  }
-  
+  }  
+}
+
+@media (orientation: portrait) and (min-width: 600px){
+  .filter-container {
+    width: calc(90vmin - 80px);
+    height: calc(45vmin - 80px);
+  }    
 }
