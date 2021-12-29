@@ -8,6 +8,7 @@ function Header() {
   return(
       <header>
         <div className="clock-base">
+          <div className='clock-center'></div>
           <SecondLine></SecondLine>
           <MinuteLine></MinuteLine>
           <HourLine></HourLine>
@@ -55,7 +56,7 @@ const SecondLine = styled.div`
   height: 1px;
   margin-left: -1px;
   width: 36%;
-  animation: ${rotateSeg} 60s linear infinite;
+  animation: ${rotateSeg} 60s steps(60, end) infinite;
 `;
 
 const MinuteLine = styled.div`

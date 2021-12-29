@@ -17,6 +17,7 @@ function Ground() {
       'letter',
       'color',
       'size',
+      'release',
   ]
 
   const activeBtn = (btn) => {

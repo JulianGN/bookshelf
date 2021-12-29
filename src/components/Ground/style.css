@@ -1,118 +1,131 @@
 .ground-container {
-    width: 100%;
-    height: 50vh;
-    background-image: url('../../imgs/ground.svg');
-    background-size: cover;
-  }
-  .filter-container {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: calc(90vmin - 80px);
-    height: calc(45vmin - 80px);
-    min-width: 280px;
-    min-height: 130px;
-    margin: 40px;
-  }
-  
-  .filter-board {
-    background-image: url('../../imgs/board.svg');
-    background-repeat: no-repeat;
-    background-position: right;
-    width: 100%;
-    height: 100%;
-    justify-content: flex-end;
-    display: flex;
-  }
-  
-  .filter-lady {
-    position: absolute;
-    bottom: -40px;
-    left: -30px;
-    height: 55vmin;
-  }
-  
-  .filter-controls {
-    width: 50%;
-    padding: 2vmin 4vmin 5vmin 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .filter-controls h3 {
-    font-size: 2.8vmin;
-    text-transform: uppercase;
-    letter-spacing: .6vmin;
-    color: #c3b6d3;
-    margin-bottom: 3vmin;
-  }
-  
-  .filter-controls ul {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .filter-controls li {
-    width: 8vmin;
-    height: 7vmin;
-  }
-  
-  .filter-controls li button {
-    border: none;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-size: auto 4.5vmin;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #e7dfef;
-    box-shadow: -.25rem 0 0 0 #e7dfef, .25rem 0 0 0 #e7dfef, 0 -.25rem 0 0 #e7dfef, 0 .25rem 0 0 #e7dfef, 0 .5rem 0 0 #c3b6d3, .25rem .25rem 0 0 #c3b6d3, -.25rem .25rem 0 0 #c3b6d3, 0px -.5rem 0 0 #e7dfef, .25rem -.25rem 0 0 #e7dfef, -.25rem -.25rem 0 0 #e7dfef;
-  }
-  
-  .filter-controls li button.active {
-    box-shadow: -.25rem 0 0 0 #e7dfef, .25rem 0 0 0 #e7dfef, 0 -.25rem 0 0 #e7dfef, 0 .25rem 0 0 #e7dfef, 0 .5rem 0 0 #e7dfef, .25rem .25rem 0 0 #e7dfef, -.25rem .25rem 0 0 #e7dfef, 0px -.5rem 0 0 #c3b6d3, .25rem -.25rem 0 0 #c3b6d3, -.25rem -.25rem 0 0 #c3b6d3;
-  }
-  
-  button.sort-by-letter {
-    background-image: url('../../imgs/filter_alphabetic.svg');
-  }
-  
-  button.sort-by-color {
-    background-image: url('../../imgs/filter_colors.svg');
-  }
-  
-  button.sort-by-size {
-    background-image: url('../../imgs/filter_sizes.svg');
-  }
-  
-  .filter-controls hr {
-    border: none;
-    border-top: .5vmin solid #e7dfef;
-    width: 70%;
-    margin: 4vmin 0 3vmin 0;
-  }
-  
-  .sort-button {
-    outline: none;
-    border: none;
-    font-family: unset;
-    font-size: 2.5vmin;
-    background-color: #38e655;
-    box-shadow: -0.25rem 0 0 0 #38e655, 0.25rem 0 0 0 #38e655, 0 -0.25rem 0 0 #38e655, 0 0.25rem 0 0 #38e655, 0.25rem 0.25rem 0 0 #1bc133, -0.25rem 0.25rem 0 0 #1bc133, 0 0.5rem 0 0 #1bc133;
-    text-transform: uppercase;
-    letter-spacing: 1.5vmin;
-    width: calc(100% - .5rem);
-    height: 7vmin;
-  }
+  width: 100%;
+  height: 50vh;
+  background-image: url('../../imgs/ground.svg');
+  background-size: cover;
+}
 
-  @media (orientation: portrait){ 
-    .filter-container {
-      width: calc(100vmin - 60px);
-      max-width: 100vmin;
-      height: calc(55vmin - 60px);
-    }
-    
+.filter-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(90vmin - 80px);
+  height: calc(45vmin - 80px);
+  min-width: 280px;
+  max-width: 745px;
+  min-height: 130px;
+  max-height: 343px;
+  margin: 40px;
+  z-index: 4;
+}
+
+.filter-board {
+  background-image: url('../../imgs/board.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.filter-lady {
+  position: absolute;
+  bottom: -40px;
+  left: -30px;
+  height: 55vmin;
+}
+
+.filter-controls {
+  width: 50%;
+  padding: 2vmin 4vmin 5vmin 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-controls h3 {
+  font-size: 2.8vmin;
+  text-transform: uppercase;
+  letter-spacing: .6vmin;
+  color: #c3b6d3;
+  margin-bottom: 3vmin;
+}
+
+.filter-controls ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.filter-controls li {
+  width: 8vmin;
+  height: 7vmin;
+}
+
+.filter-controls li button {
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-size: auto 4.5vmin;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #e7dfef;
+  box-shadow: -.25rem 0 0 0 #e7dfef, .25rem 0 0 0 #e7dfef, 0 -.25rem 0 0 #e7dfef, 0 .25rem 0 0 #e7dfef, 0 .5rem 0 0 #c3b6d3, .25rem .25rem 0 0 #c3b6d3, -.25rem .25rem 0 0 #c3b6d3, 0px -.5rem 0 0 #e7dfef, .25rem -.25rem 0 0 #e7dfef, -.25rem -.25rem 0 0 #e7dfef;
+}
+
+.filter-controls li button.active {
+  box-shadow: -.25rem 0 0 0 #e7dfef, .25rem 0 0 0 #e7dfef, 0 -.25rem 0 0 #e7dfef, 0 .25rem 0 0 #e7dfef, 0 .5rem 0 0 #e7dfef, .25rem .25rem 0 0 #e7dfef, -.25rem .25rem 0 0 #e7dfef, 0px -.5rem 0 0 #c3b6d3, .25rem -.25rem 0 0 #c3b6d3, -.25rem -.25rem 0 0 #c3b6d3;
+}
+
+button.sort-by-letter {
+  background-image: url('../../imgs/filter_alphabetic.svg');
+}
+
+button.sort-by-color {
+  background-image: url('../../imgs/filter_colors.svg');
+}
+
+button.sort-by-size {
+  background-image: url('../../imgs/filter_sizes.svg');
+}
+
+button.sort-by-release {
+  background-image: url('../../imgs/filter_release.svg');
+}
+
+.filter-controls hr {
+  border: none;
+  border-top: .5vmin solid #e7dfef;
+  width: 70%;
+  margin: 4vmin 0 3vmin 0;
+}
+
+.sort-button {
+  outline: none;
+  border: none;
+  font-family: unset;
+  font-size: 2.5vmin;
+  background-color: #38e655;
+  box-shadow: -0.25rem 0 0 0 #38e655, 0.25rem 0 0 0 #38e655, 0 -0.25rem 0 0 #38e655, 0 0.25rem 0 0 #38e655, 0.25rem 0.25rem 0 0 #1bc133, -0.25rem 0.25rem 0 0 #1bc133, 0 0.5rem 0 0 #1bc133;
+  text-transform: uppercase;
+  letter-spacing: 1.5vmin;
+  width: calc(100% - .5rem);
+  height: 7vmin;
+  transition: .5s;
+}
+
+.sort-button:active {
+  transform: scale(.95);
+  transition: .25s;
+}
+
+@media (orientation: portrait){ 
+  .filter-container {
+    width: calc(100vmin - 80px);
+    height: calc(55vmin - 80px);
   }
+  
+}
